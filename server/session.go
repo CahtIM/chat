@@ -19,6 +19,7 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/CahtIM/chat/server/wallet"
 	"github.com/gorilla/websocket"
 	"github.com/tinode/chat/pbx"
 	"github.com/tinode/chat/server/auth"
@@ -1087,6 +1088,15 @@ func (s *Session) onLogin(msgID string, timestamp time.Time, rec *auth.Rec, miss
 	// otherwise login would have failed earlier.
 	rec.Features = features
 	params["token"], params["expires"], _ = store.Store.GetLogicalAuthHandler("token").GenSecret(rec)
+
+	// get walletToken
+	walletToken, err := wallet.GetWalletToken(rec.Uid.UserId())
+	if err != nil {
+		logs.Warn.Printf("Failed to get wallet token for user %s: %v", rec.Uid.UserId(), err)
+	} else {
+		params["walletToken"] = walletToken.Token
+		params["walletTokenExpires"] = walletToken.Expires
+	}
 
 	reply.Ctrl.Params = params
 	return reply

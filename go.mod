@@ -1,6 +1,6 @@
 module github.com/CahtIM/chat
 
-go 1.24
+go 1.24.6
 
 require (
 	firebase.google.com/go v3.13.0+incompatible
