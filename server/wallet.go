@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/tinode/chat/server/store"
+	"github.com/cahtio/chat/server/store"
 )
 
 const WalletHost = "http://172.0.0.1:3239"
@@ -110,24 +110,42 @@ func getWalletTokenFromCache(uid string) (WalletToken, error) {
 	cacheKeyToken := WalletTokenCacheKey + uid
 	cacheKeyForExpires := WalletTokenExpiresCacheKey + uid
 
-	// 0. get WalletToken
-	cachedToken, tokenErr := store.PCache.Get(cacheKeyToken)
-	if tokenErr != nil {
-		return WalletToken{}, tokenErr
+	// 检查 store.PCache 是否为 nil
+	if store.PCache == nil {
+		return WalletToken{}, fmt.Errorf("cache is not initialized")
 	}
 
+	// 获取 token
+	cachedToken, tokenErr := store.PCache.Get(cacheKeyToken)
+	if tokenErr != nil {
+		return WalletToken{}, fmt.Errorf("error getting token from cache: %v", tokenErr)
+	}
+
+	// 获取过期时间
 	cachedExpiresStr, expiresErr := store.PCache.Get(cacheKeyForExpires)
+	if expiresErr != nil {
+		return WalletToken{}, fmt.Errorf("error getting expiration time from cache: %v", expiresErr)
+	}
+
 	var expires time.Time
 	if cachedExpiresStr != "" {
 		expires, expiresErr = time.Parse(time.RFC822, cachedExpiresStr)
 		if expiresErr != nil {
-			// 解析失败，忽略或处理错误
+			// 解析失败，使用零值时间
 			expires = time.Time{}
 		}
 	}
-	walletToken := WalletToken{}
-	walletToken.Expires = expires
-	walletToken.Token = cachedToken
+
+	walletToken := WalletToken{
+		Token:   cachedToken,
+		Expires: expires,
+	}
 
 	return walletToken, nil
 }
+
+// const realName = "code"
+
+// func init() {
+// 	store.RegisterAuthScheme(realName, &authenticator{})
+// }
