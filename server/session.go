@@ -21,11 +21,11 @@ import (
 
 	"github.com/CahtIM/chat/server/wallet"
 	"github.com/gorilla/websocket"
-	"github.com/tinode/chat/pbx"
-	"github.com/tinode/chat/server/auth"
-	"github.com/tinode/chat/server/logs"
-	"github.com/tinode/chat/server/store"
-	"github.com/tinode/chat/server/store/types"
+	"github.com/cahtio/chat/pbx"
+	"github.com/cahtio/chat/server/auth"
+	"github.com/cahtio/chat/server/logs"
+	"github.com/cahtio/chat/server/store"
+	"github.com/cahtio/chat/server/store/types"
 
 	"golang.org/x/text/language"
 )

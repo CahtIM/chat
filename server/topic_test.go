@@ -8,12 +8,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/cahtio/chat/server/auth"
+	"github.com/cahtio/chat/server/logs"
+	"github.com/cahtio/chat/server/store"
+	"github.com/cahtio/chat/server/store/mock_store"
+	"github.com/cahtio/chat/server/store/types"
 	"github.com/golang/mock/gomock"
-	"github.com/tinode/chat/server/auth"
-	"github.com/tinode/chat/server/logs"
-	"github.com/tinode/chat/server/store"
-	"github.com/tinode/chat/server/store/mock_store"
-	"github.com/tinode/chat/server/store/types"
 )
 
 type responses struct {

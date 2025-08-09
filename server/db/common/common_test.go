@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tinode/chat/server/store/types"
+	"github.com/cahtio/chat/server/store/types"
 )
 
 func genTestData() []types.Subscription {

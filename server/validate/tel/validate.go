@@ -9,11 +9,11 @@ import (
 	"strings"
 	textt "text/template"
 
+	"github.com/cahtio/chat/server/logs"
+	"github.com/cahtio/chat/server/store"
+	t "github.com/cahtio/chat/server/store/types"
+	"github.com/cahtio/chat/server/validate"
 	"github.com/nyaruka/phonenumbers"
-	"github.com/tinode/chat/server/logs"
-	"github.com/tinode/chat/server/store"
-	t "github.com/tinode/chat/server/store/types"
-	"github.com/tinode/chat/server/validate"
 	i18n "golang.org/x/text/language"
 )
 

@@ -16,7 +16,7 @@ Alternatively, you can instruct the docker container to save the logs to a direc
 
 
 ### Q: What are the options for enabling push notifications?<br/>
-**A**: You can use [Tinode Push Gateway (TNPG)](https://github.com/tinode/chat/tree/master/server/push/tnpg) or you can use [Google FCM](https://firebase.google.com/docs/cloud-messaging):
+**A**: You can use [Tinode Push Gateway (TNPG)](https://github.com/cahtio/chat/tree/master/server/push/tnpg) or you can use [Google FCM](https://firebase.google.com/docs/cloud-messaging):
  * _Tinode Push Gateway_ uses Tinode servers to send pushes on your behalf. It requires minumum setup: your server sends request to TNPG, which forwards it to Google FCM or Apple APNS.
  * _Google FCM_ does not rely on Tinode infrastructure for pushes but requires you to build and release your own mobile apps (iOS and Android).
 
@@ -43,13 +43,13 @@ Enabling FCM push notifications requires the following steps:
   * _Either_ enter the path to the downloaded credentials file into `"credentials_file"`.
   * _OR_ copy the file contents to `"credentials"`.<br/><br/>
     Remove the other entry. I.e. if you have updated `"credentials_file"`, remove `"credentials"` and vice versa.
-4. Update [TinodeWeb](/tinode/webapp/) config [`firebase-init.js`](https://github.com/tinode/webapp/blob/master/firebase-init.js): update `apiKey`, `messagingSenderId`, `projectId`, `appId`, `messagingVapidKey`. See more info at https://github.com/tinode/webapp/#push_notifications
+4. Update [TinodeWeb](/tinode/webapp/) config [`firebase-init.js`](https://github.com/cahtio/webapp/blob/master/firebase-init.js): update `apiKey`, `messagingSenderId`, `projectId`, `appId`, `messagingVapidKey`. See more info at https://github.com/cahtio/webapp/#push_notifications
 
 #### iOS and Android
 1. If you are using an Android client, add `google-services.json` to [Tindroid](/tinode/tindroid/) by following instructions at https://developers.google.com/android/guides/google-services-plugin and recompile the client. You may also optionally submit it to Google Play Store.
-See more info at https://github.com/tinode/tindroid/#push_notifications
+See more info at https://github.com/cahtio/tindroid/#push_notifications
 2. If you are using an iOS client, add `GoogleService-Info.plist` to [Tinodios](/tinode/ios/) by following instructions at https://firebase.google.com/docs/cloud-messaging/ios/client) and recompile the client. You may optionally submit the app to Apple AppStore.
-See more info at https://github.com/tinode/ios/#push_notifications
+See more info at https://github.com/cahtio/ios/#push_notifications
 
 
 ### Q: How to add new users?<br/>
