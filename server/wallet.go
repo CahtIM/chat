@@ -57,11 +57,10 @@ func getWalletToken(uid string) (WalletToken, error) {
 }
 
 func getBServiceToken(uid string) (string, error) {
+	//  url ，
+	url := WalletHost + WalletTokenPath
 
-	url := fmt.Sprintf(WalletHost, WalletTokenPath)
-
-	// send request to B service
-	// body
+	// send body
 	requestBody, err := json.Marshal(map[string]string{
 		"uid": uid,
 	})
@@ -69,17 +68,16 @@ func getBServiceToken(uid string) (string, error) {
 		return "", fmt.Errorf("error creating request body: %v", err)
 	}
 
-	// send request
-	req, err := http.NewRequest("GET", url, bytes.NewBuffer(requestBody))
+	// POST
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(requestBody))
 	if err != nil {
 		return "", fmt.Errorf("error creating request: %v", err)
 	}
 
-	// add header
+	// add Header
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", WalletAuthorization)
 
-	// send
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
@@ -87,7 +85,6 @@ func getBServiceToken(uid string) (string, error) {
 	}
 	defer resp.Body.Close()
 
-	// read response
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return "", fmt.Errorf("error reading response body: %v", err)
@@ -110,18 +107,18 @@ func getWalletTokenFromCache(uid string) (WalletToken, error) {
 	cacheKeyToken := WalletTokenCacheKey + uid
 	cacheKeyForExpires := WalletTokenExpiresCacheKey + uid
 
-	// 检查 store.PCache 是否为 nil
+	// check store.PCache is nil
 	if store.PCache == nil {
 		return WalletToken{}, fmt.Errorf("cache is not initialized")
 	}
 
-	// 获取 token
+	// get token
 	cachedToken, tokenErr := store.PCache.Get(cacheKeyToken)
 	if tokenErr != nil {
 		return WalletToken{}, fmt.Errorf("error getting token from cache: %v", tokenErr)
 	}
 
-	// 获取过期时间
+	// get expires
 	cachedExpiresStr, expiresErr := store.PCache.Get(cacheKeyForExpires)
 	if expiresErr != nil {
 		return WalletToken{}, fmt.Errorf("error getting expiration time from cache: %v", expiresErr)
@@ -131,7 +128,7 @@ func getWalletTokenFromCache(uid string) (WalletToken, error) {
 	if cachedExpiresStr != "" {
 		expires, expiresErr = time.Parse(time.RFC822, cachedExpiresStr)
 		if expiresErr != nil {
-			// 解析失败，使用零值时间
+			// use zero time
 			expires = time.Time{}
 		}
 	}
