@@ -11,7 +11,7 @@ import (
 	"github.com/cahtio/chat/server/store"
 )
 
-const WalletHost = "http://172.0.0.1:3239"
+const WalletHost = "http://127.0.0.1:9753"
 const WalletTokenPath = "/app/authToken"
 const WalletGetaddressPath = "/balance/rechargeInfo/"
 const WalletAuthorization = "123456"
