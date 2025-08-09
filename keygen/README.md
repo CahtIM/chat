@@ -30,11 +30,11 @@ API key v1 seq1 [ordinary]: AQAAAAABAACGOIyP2vh5avSff5oVvMpk
 HMAC salt: TC0Jzr8f28kAspXrb4UYccJUJ63b7CSA16n1qMxxGpw=
 ```
 
-Copy `HMAC salt` to `api_key_salt` parameter in your server [config file](https://github.com/tinode/chat/blob/master/server/tinode.conf).
+Copy `HMAC salt` to `api_key_salt` parameter in your server [config file](https://github.com/cahtio/chat/blob/master/server/tinode.conf).
 Copy `API key` to the client applications:
 
- * TinodeWeb: `API_KEY` in [config.js](https://github.com/tinode/webapp/blob/master/src/config.js)
- * Tindroid: `API_KEY` in [Cache.java](https://github.com/tinode/tindroid/blob/master/app/src/main/java/co/tinode/tindroid/Cache.java)
- * Tinodious: `kApiKey` in [SharedUtils.swift](https://github.com/tinode/ios/blob/master/TinodiosDB/SharedUtils.swift)
+ * TinodeWeb: `API_KEY` in [config.js](https://github.com/cahtio/webapp/blob/master/src/config.js)
+ * Tindroid: `API_KEY` in [Cache.java](https://github.com/cahtio/tindroid/blob/master/app/src/main/java/co/tinode/tindroid/Cache.java)
+ * Tinodious: `kApiKey` in [SharedUtils.swift](https://github.com/cahtio/ios/blob/master/TinodiosDB/SharedUtils.swift)
 
 Rebuild the clients after changing the API key.

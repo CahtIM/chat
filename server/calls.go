@@ -14,8 +14,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/tinode/chat/server/logs"
-	"github.com/tinode/chat/server/store/types"
+	"github.com/cahtio/chat/server/logs"
+	"github.com/cahtio/chat/server/store/types"
 	jcr "github.com/tinode/jsonco"
 )
 

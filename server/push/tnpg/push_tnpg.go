@@ -11,12 +11,12 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/tinode/chat/server/logs"
-	"github.com/tinode/chat/server/push"
-	"github.com/tinode/chat/server/push/common"
-	"github.com/tinode/chat/server/push/fcm"
-	"github.com/tinode/chat/server/store"
-	"github.com/tinode/chat/server/store/types"
+	"github.com/cahtio/chat/server/logs"
+	"github.com/cahtio/chat/server/push"
+	"github.com/cahtio/chat/server/push/common"
+	"github.com/cahtio/chat/server/push/fcm"
+	"github.com/cahtio/chat/server/store"
+	"github.com/cahtio/chat/server/store/types"
 
 	fcmv1 "google.golang.org/api/fcm/v1"
 )

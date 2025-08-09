@@ -6,12 +6,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/cahtio/chat/server/auth"
+	"github.com/cahtio/chat/server/auth/mock_auth"
+	"github.com/cahtio/chat/server/store"
+	"github.com/cahtio/chat/server/store/mock_store"
+	"github.com/cahtio/chat/server/store/types"
 	"github.com/golang/mock/gomock"
-	"github.com/tinode/chat/server/auth"
-	"github.com/tinode/chat/server/auth/mock_auth"
-	"github.com/tinode/chat/server/store"
-	"github.com/tinode/chat/server/store/mock_store"
-	"github.com/tinode/chat/server/store/types"
 )
 
 func test_makeSession(uid types.Uid) *Session {

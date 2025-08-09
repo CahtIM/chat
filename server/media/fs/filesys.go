@@ -1,4 +1,4 @@
-// Package fs implements github.com/tinode/chat/server/media interface by storing media objects in a single
+// Package fs implements github.com/cahtio/chat/server/media interface by storing media objects in a single
 // directory in the file system.
 // This module won't perform well with tens of thousand of files because it stores all files in a single directory.
 package fs
@@ -16,10 +16,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/tinode/chat/server/logs"
-	"github.com/tinode/chat/server/media"
-	"github.com/tinode/chat/server/store"
-	"github.com/tinode/chat/server/store/types"
+	"github.com/cahtio/chat/server/logs"
+	"github.com/cahtio/chat/server/media"
+	"github.com/cahtio/chat/server/store"
+	"github.com/cahtio/chat/server/store/types"
 )
 
 const (

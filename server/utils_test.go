@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/tinode/chat/server/store/types"
+	"github.com/cahtio/chat/server/store/types"
 )
 
 func slicesEqual(expected, gotten []string) bool {

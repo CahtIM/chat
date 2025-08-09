@@ -7,11 +7,11 @@ import (
 
 	"slices"
 
-	"github.com/tinode/chat/server/auth"
-	"github.com/tinode/chat/server/logs"
-	"github.com/tinode/chat/server/push"
-	"github.com/tinode/chat/server/store"
-	"github.com/tinode/chat/server/store/types"
+	"github.com/cahtio/chat/server/auth"
+	"github.com/cahtio/chat/server/logs"
+	"github.com/cahtio/chat/server/push"
+	"github.com/cahtio/chat/server/store"
+	"github.com/cahtio/chat/server/store/types"
 )
 
 const (

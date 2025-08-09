@@ -11,7 +11,7 @@ import (
 
 	"slices"
 
-	"github.com/tinode/chat/server/store/types"
+	"github.com/cahtio/chat/server/store/types"
 )
 
 // ReadSeekCloser must be implemented by the media being downloaded.

@@ -16,12 +16,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/cahtio/chat/server/auth"
+	"github.com/cahtio/chat/server/db/common"
+	"github.com/cahtio/chat/server/store"
+	t "github.com/cahtio/chat/server/store/types"
 	ms "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
-	"github.com/tinode/chat/server/auth"
-	"github.com/tinode/chat/server/db/common"
-	"github.com/tinode/chat/server/store"
-	t "github.com/tinode/chat/server/store/types"
 )
 
 // adapter holds MySQL connection data.
