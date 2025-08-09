@@ -15,6 +15,8 @@ const WalletHost = "http://172.0.0.1:3239"
 const WalletTokenPath = "/app/authToken"
 const WalletGetaddressPath = "/balance/rechargeInfo/"
 const WalletAuthorization = "123456"
+const WalletTokenCacheKey = "WalletToken_"
+const WalletTokenExpiresCacheKey = "WalletTokenExpires_"
 
 type WalletToken struct {
 	Token   string    `json:"token"`
@@ -29,13 +31,11 @@ type BServiceResponse struct {
 }
 
 func getWalletToken(uid string) (WalletToken, error) {
-	cacheKey := "WalletToken_" + uid
-	// 0. get WalletToken
-	cachedToken, _ := store.PCache.Get(cacheKey)
-	walletToken, ok := cachedToken.(WalletToken)
+
+	walletToken, err := getWalletTokenFromCache(uid)
 
 	// 1. check
-	if !ok || time.Now().After(walletToken.Expires) {
+	if err != nil || time.Now().After(walletToken.Expires) {
 		// 2. network walletToken
 		newToken, err := getBServiceToken(uid)
 		if err != nil {
@@ -49,7 +49,8 @@ func getWalletToken(uid string) (WalletToken, error) {
 		}
 
 		// save new WalletToken
-		store.PCache.Set(cacheKey, walletToken, 7*24*time.Hour)
+		store.PCache.Upsert((WalletTokenCacheKey + uid), walletToken.Token, true)
+		store.PCache.Upsert((WalletTokenExpiresCacheKey + uid), walletToken.Expires.Format(time.RFC822), true)
 	}
 
 	return walletToken, nil
@@ -103,4 +104,30 @@ func getBServiceToken(uid string) (string, error) {
 	}
 
 	return bResp.Data, nil
+}
+
+func getWalletTokenFromCache(uid string) (WalletToken, error) {
+	cacheKeyToken := WalletTokenCacheKey + uid
+	cacheKeyForExpires := WalletTokenExpiresCacheKey + uid
+
+	// 0. get WalletToken
+	cachedToken, tokenErr := store.PCache.Get(cacheKeyToken)
+	if tokenErr != nil {
+		return WalletToken{}, tokenErr
+	}
+
+	cachedExpiresStr, expiresErr := store.PCache.Get(cacheKeyForExpires)
+	var expires time.Time
+	if cachedExpiresStr != "" {
+		expires, expiresErr = time.Parse(time.RFC822, cachedExpiresStr)
+		if expiresErr != nil {
+			// 解析失败，忽略或处理错误
+			expires = time.Time{}
+		}
+	}
+	walletToken := WalletToken{}
+	walletToken.Expires = expires
+	walletToken.Token = cachedToken
+
+	return walletToken, nil
 }
