@@ -629,7 +629,7 @@ Tinode provides an optional service which helps client applications generate lin
 The first several kilobytes of the document at the given URL is fetched by issuing an HTTP(S) GET request. If the returned document has content-type `text/html`, the HTML is parsed for page title, description, and image URL. The result is formatted as JSON and returned as
 
 ```json
-{"title": "Page title", "description": "This is a page description", "image_url": "https://tinode.co/img/logo64x64.png"}
+{"title": "Page title", "description": "This is a page description", "image_url": "https://im.caht.io/img/logo64x64.png"}
 ```
 
 The link preview service requires authentication. It's exactly the same as authentication for [Out of Band Large Files](#out-of-band-handling-of-large-files).

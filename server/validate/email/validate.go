@@ -556,7 +556,7 @@ func (a *loginAuth) Next(fromServer []byte, more bool) ([]byte, error) {
 func randomBoundary() string {
 	var buf [24]byte
 	rand.Read(buf[:])
-	return fmt.Sprintf("tinode--%x", buf[:])
+	return fmt.Sprintf("caht--%x", buf[:])
 }
 
 func init() {

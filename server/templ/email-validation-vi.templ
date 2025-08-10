@@ -5,7 +5,7 @@
 */}}
 
 {{define "subject" -}}
-Xác thực đăng ký tài khoản Tinode
+Xác thực đăng ký tài khoản CaHt
 {{- end}}
 
 {{define "body_html" -}}
@@ -15,7 +15,7 @@ Xác thực đăng ký tài khoản Tinode
 <p>Xin chào.</p>
 
 <p>Bạn nhận được tin nhắn này bởi vì có ai đó đã dùng email này để đăng ký tài khoản tại
-<a href="{{.HostUrl}}">Tinode</a>.</p>
+<a href="{{.HostUrl}}">CaHt</a>.</p>
 
 <p><a href="{{.HostUrl}}#cred?method=email&code={{.Code}}&token={{.Token}}">Bấm để xác nhận</a>
 hoặc đi tới liên kết
@@ -24,9 +24,9 @@ và nhập mã xác thực:</p>
 <blockquote><big>{{.Code}}</big></blockquote>
 <p>Có thể bạn cần nhập tên đăng nhập và mật khẩu.</p>
 
-<p>Nếu bạn không đăng ký tài khoản tại Tinode vui lòng bỏ qua tin nhắn này.</p>
+<p>Nếu bạn không đăng ký tài khoản tại CaHt vui lòng bỏ qua tin nhắn này.</p>
 
-<p><a href="https://tinode.co/">Tinode Team</a></p>
+<p><a href="https://im.caht.io/">CaHt Team</a></p>
 
 </body>
 </html>
@@ -36,7 +36,7 @@ và nhập mã xác thực:</p>
 
 Xin chào.
 
-Bạn nhận được tin nhắn này bởi vì có ai đó đã dùng email này để đăng ký tài khoản tại Tinode ({{.HostUrl}}).
+Bạn nhận được tin nhắn này bởi vì có ai đó đã dùng email này để đăng ký tài khoản tại CaHt ({{.HostUrl}}).
 
 Bấm vào liên kết {{.HostUrl}}#cred?method=email&code={{.Code}}&token={{.Token}} để xác nhận hoặc đi tới {{.HostUrl}}#cred?what=email
 và nhập mã xác thực
@@ -45,9 +45,9 @@ và nhập mã xác thực
 
 Có thể bạn sẽ cần nhập tên đăng nhập và mật khẩu.
 
-Nếu bạn không đăng ký tài khoản tại Tinode vui lòng bỏ qua tin nhắn này.
+Nếu bạn không đăng ký tài khoản tại CaHt vui lòng bỏ qua tin nhắn này.
 
-Tinode Team
-https://tinode.co/
+CaHt Team
+https://im.caht.io/
 
 {{- end}}

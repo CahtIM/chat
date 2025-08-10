@@ -14,7 +14,7 @@
 */}}
 
 {{define "subject" -}}
-Tinode 注册: 确认邮件
+CaHt 注册: 确认邮件
 {{- end}}
 
 {{define "body_html" -}}
@@ -23,7 +23,7 @@ Tinode 注册: 确认邮件
 
 <p>您好！</p>
 
-<p>您收到此消息是因为您注册了<a href="{{.HostUrl}}">Tinode</a>。</p>
+<p>您收到此消息是因为您注册了<a href="{{.HostUrl}}">CaHt</a>。</p>
 
 <p><a href="{{.HostUrl}}#cred?method=email&code={{.Code}}&token={{.Token}}">确认注册</a>
 或者跳转至链接
@@ -32,9 +32,9 @@ Tinode 注册: 确认邮件
 <blockquote><big>{{.Code}}</big></blockquote>
 <p>您可能需要输入登录名和密码。</p>
 
-<p>如果您没有注册Tinode，请忽略这条消息。</p>
+<p>如果您没有注册CaHt，请忽略这条消息。</p>
 
-<p><a href="https://tinode.co/">Tinode 团队</a></p>
+<p><a href="https://im.caht.io/">CaHt 团队</a></p>
 
 </body>
 </html>
@@ -44,7 +44,7 @@ Tinode 注册: 确认邮件
 
 您好！
 
-您收到此消息是因为您注册了 Tinode ({{.HostUrl}})。
+您收到此消息是因为您注册了 CaHt ({{.HostUrl}})。
 
 点击链接 {{.HostUrl}}#cred?method=email&code={{.Code}}&token={{.Token}} 确认注册或者跳转至链接 {{.HostUrl}}#cred?what=email
 并输入验证码：
@@ -53,9 +53,9 @@ Tinode 注册: 确认邮件
 
 您可能需要输入登录名和密码。
 
-如果您没有注册Tinode，请忽略这条消息。
+如果您没有注册CaHt，请忽略这条消息。
 
-Tinode 团队
-https://tinode.co/
+CaHt 团队
+https://im.caht.io/
 
 {{- end}}
