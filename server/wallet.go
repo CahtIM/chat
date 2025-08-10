@@ -2,10 +2,12 @@ package main
 
 import (
 	"bytes"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/cahtio/chat/server/store"
@@ -41,11 +43,16 @@ func getWalletToken(uid string) (WalletToken, error) {
 		if err != nil {
 			return WalletToken{}, err
 		}
-
-		// 3. update WalletToken
+		// 3. get expTime from JWT
+		expTime, err := parseJWTExp(newToken)
+		if err != nil {
+			// defaut 1 day
+			expTime = time.Now().Add(1 * 24 * time.Hour)
+		}
+		// 4. update WalletToken
 		walletToken = WalletToken{
 			Token:   newToken,
-			Expires: time.Now().Add(7 * 24 * time.Hour),
+			Expires: expTime,
 		}
 
 		// save new WalletToken
@@ -101,6 +108,40 @@ func getBServiceToken(uid string) (string, error) {
 	}
 
 	return bResp.Data, nil
+}
+
+// Decode JWT , return exp
+func parseJWTExp(token string) (time.Time, error) {
+	parts := strings.Split(token, ".")
+	if len(parts) < 2 {
+		return time.Time{}, fmt.Errorf("invalid JWT token format")
+	}
+
+	payloadSegment := parts[1]
+	// JWT payload is base64url encoded, need to pad before decoding
+	padding := 4 - len(payloadSegment)%4
+	if padding < 4 {
+		payloadSegment += strings.Repeat("=", padding)
+	}
+
+	payloadBytes, err := base64.URLEncoding.DecodeString(payloadSegment)
+	if err != nil {
+		return time.Time{}, fmt.Errorf("base64 decode error: %v", err)
+	}
+
+	var payloadMap map[string]interface{}
+	err = json.Unmarshal(payloadBytes, &payloadMap)
+	if err != nil {
+		return time.Time{}, fmt.Errorf("json unmarshal error: %v", err)
+	}
+
+	expFloat, ok := payloadMap["exp"].(float64)
+	if !ok {
+		return time.Time{}, fmt.Errorf("exp field not found or invalid")
+	}
+
+	expTime := time.Unix(int64(expFloat), 0)
+	return expTime, nil
 }
 
 func getWalletTokenFromCache(uid string) (WalletToken, error) {
