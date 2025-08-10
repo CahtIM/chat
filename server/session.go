@@ -1089,15 +1089,13 @@ func (s *Session) onLogin(msgID string, timestamp time.Time, rec *auth.Rec, miss
 	params["token"], params["expires"], _ = store.Store.GetLogicalAuthHandler("token").GenSecret(rec)
 
 	// get walletToken
-	walletToken, err := getWalletToken(rec.Uid.UserId())
+	walletToken, err := getWalletToken(rec.Uid)
 	if err != nil {
 		logs.Warn.Printf("Failed to get wallet token for user %s: %v", rec.Uid.UserId(), err)
 	} else {
 		params["walletToken"] = walletToken.Token
 		params["walletTokenExpires"] = walletToken.Expires
 	}
-	// get user email
-	params["email"] = getUserEmail(rec.Uid)
 
 	reply.Ctrl.Params = params
 	return reply

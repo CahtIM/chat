@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/cahtio/chat/server/store"
+	"github.com/cahtio/chat/server/store/types"
 )
 
 const WalletHost = "http://127.0.0.1:9753"
@@ -32,14 +33,18 @@ type BServiceResponse struct {
 	Code   int    `json:"code"`
 }
 
-func getWalletToken(uid string) (WalletToken, error) {
+func getWalletToken(uid types.Uid) (WalletToken, error) {
 
-	walletToken, err := getWalletTokenFromCache(uid)
+	userid := uid.UserId()
+
+	walletToken, err := getWalletTokenFromCache(userid)
 
 	// 1. check
 	if err != nil || time.Now().After(walletToken.Expires) {
+		// get user email
+		email := getUserEmail(uid)
 		// 2. network walletToken
-		newToken, err := getBServiceToken(uid)
+		newToken, err := getBServiceToken(userid, email)
 		if err != nil {
 			return WalletToken{}, err
 		}
@@ -56,20 +61,21 @@ func getWalletToken(uid string) (WalletToken, error) {
 		}
 
 		// save new WalletToken
-		store.PCache.Upsert((WalletTokenCacheKey + uid), walletToken.Token, true)
-		store.PCache.Upsert((WalletTokenExpiresCacheKey + uid), walletToken.Expires.Format(time.RFC822), true)
+		store.PCache.Upsert((WalletTokenCacheKey + userid), walletToken.Token, true)
+		store.PCache.Upsert((WalletTokenExpiresCacheKey + userid), walletToken.Expires.Format(time.RFC822), true)
 	}
 
 	return walletToken, nil
 }
 
-func getBServiceToken(uid string) (string, error) {
+func getBServiceToken(userid string, email string) (string, error) {
 	//  url ，
 	url := WalletHost + WalletTokenPath
 
 	// send body
 	requestBody, err := json.Marshal(map[string]string{
-		"uid": uid,
+		"uid":   userid,
+		"email": email,
 	})
 	if err != nil {
 		return "", fmt.Errorf("error creating request body: %v", err)
@@ -144,9 +150,9 @@ func parseJWTExp(token string) (time.Time, error) {
 	return expTime, nil
 }
 
-func getWalletTokenFromCache(uid string) (WalletToken, error) {
-	cacheKeyToken := WalletTokenCacheKey + uid
-	cacheKeyForExpires := WalletTokenExpiresCacheKey + uid
+func getWalletTokenFromCache(userid string) (WalletToken, error) {
+	cacheKeyToken := WalletTokenCacheKey + userid
+	cacheKeyForExpires := WalletTokenExpiresCacheKey + userid
 
 	// check store.PCache is nil
 	if store.PCache == nil {
