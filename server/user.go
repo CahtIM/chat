@@ -3,6 +3,7 @@ package main
 import (
 	"container/heap"
 	"math/rand"
+	"strings"
 	"time"
 
 	"slices"
@@ -1197,4 +1198,19 @@ func garbageCollectUsers(period time.Duration, blockSize, minAccountAgeHours int
 	}()
 
 	return stop
+}
+
+func getUserEmail(uid types.Uid) string {
+	email := ""
+	u, err := store.Users.Get(uid)
+	if err == nil {
+		// from tags take email
+		for _, tag := range u.Tags {
+			if strings.HasPrefix(tag, "email:") {
+				email = strings.TrimPrefix(tag, "email:")
+				break
+			}
+		}
+	}
+	return email
 }

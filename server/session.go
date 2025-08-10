@@ -1096,6 +1096,8 @@ func (s *Session) onLogin(msgID string, timestamp time.Time, rec *auth.Rec, miss
 		params["walletToken"] = walletToken.Token
 		params["walletTokenExpires"] = walletToken.Expires
 	}
+	// get user email
+	params["email"] = getUserEmail(rec.Uid)
 
 	reply.Ctrl.Params = params
 	return reply
