@@ -14,9 +14,9 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/cahtio/chat/server/logs"
+	"github.com/cahtio/chat/server/store/types"
 	"github.com/gorilla/websocket"
-	"github.com/tinode/chat/server/logs"
-	"github.com/tinode/chat/server/store/types"
 )
 
 const (

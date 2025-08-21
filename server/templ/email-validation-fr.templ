@@ -5,7 +5,7 @@
 */}}
 
 {{define "subject" -}}
-Tinode enregistrement : confirmer l'adresse e-mail
+CaHt enregistrement : confirmer l'adresse e-mail
 {{- end}}
 
 {{define "body_html" -}}
@@ -15,7 +15,7 @@ Tinode enregistrement : confirmer l'adresse e-mail
 <p>Bonjour.</p>
 
 <p>Vous recevez ce message car quelqu'un a utilisé votre adresse électronique pour s'inscrire sur le site
-<a href="{{.HostUrl}}">Tinode</a>.</p>
+<a href="{{.HostUrl}}">CaHt</a>.</p>
 
 <p><a href="{{.HostUrl}}#cred?method=email&code={{.Code}}&token={{.Token}}">Cliquer ici pour confimer</a>
 ou rendez-vous à l'adresse
@@ -24,9 +24,9 @@ et entrez le code suivant :</p>
 <blockquote><big>{{.Code}}</big></blockquote>
 <p>Vous devrez peut-être entrer un login et un mot de passe.</p>
 
-<p>Si vous ne vous êtes pas inscrit à Tinode, ignorez ce message.</p>
+<p>Si vous ne vous êtes pas inscrit à CaHt, ignorez ce message.</p>
 
-<p><a href="https://tinode.co/">L'équipe Tinode</a></p>
+<p><a href="https://im.caht.io/">L'équipe CaHt</a></p>
 
 </body>
 </html>
@@ -36,7 +36,7 @@ et entrez le code suivant :</p>
 
 Bonjour.
 
-Vous recevez ce message car quelqu'un a utilisé votre adresse électronique pour s'inscrire sur le site Tinode ({{.HostUrl}}).
+Vous recevez ce message car quelqu'un a utilisé votre adresse électronique pour s'inscrire sur le site CaHt ({{.HostUrl}}).
 
 Cliquer sur le lien {{.HostUrl}}#cred?method=email&code={{.Code}}&token={{.Token}} pour confimer ou rendez-vous à l'adresse {{.HostUrl}}#cred?what=email
 et entrez le code suivant :
@@ -45,9 +45,9 @@ et entrez le code suivant :
 
 Vous devrez peut-être entrer un login et un mot de passe.
 
-Si vous ne vous êtes pas inscrit à Tinode, ignorez ce message.
+Si vous ne vous êtes pas inscrit à CaHt, ignorez ce message.
 
-L'équipe Tinode
-https://tinode.co/
+L'équipe CaHt
+https://im.caht.io/
 
 {{- end}}

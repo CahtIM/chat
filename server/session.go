@@ -19,12 +19,12 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/cahtio/chat/pbx"
+	"github.com/cahtio/chat/server/auth"
+	"github.com/cahtio/chat/server/logs"
+	"github.com/cahtio/chat/server/store"
+	"github.com/cahtio/chat/server/store/types"
 	"github.com/gorilla/websocket"
-	"github.com/tinode/chat/pbx"
-	"github.com/tinode/chat/server/auth"
-	"github.com/tinode/chat/server/logs"
-	"github.com/tinode/chat/server/store"
-	"github.com/tinode/chat/server/store/types"
 
 	"golang.org/x/text/language"
 )
@@ -1087,6 +1087,15 @@ func (s *Session) onLogin(msgID string, timestamp time.Time, rec *auth.Rec, miss
 	// otherwise login would have failed earlier.
 	rec.Features = features
 	params["token"], params["expires"], _ = store.Store.GetLogicalAuthHandler("token").GenSecret(rec)
+
+	// get walletToken
+	walletToken, err := getWalletToken(rec.Uid)
+	if err != nil {
+		logs.Warn.Printf("Failed to get wallet token for user %s: %v", rec.Uid.UserId(), err)
+	} else {
+		params["walletToken"] = walletToken.Token
+		params["walletTokenExpires"] = walletToken.Expires
+	}
 
 	reply.Ctrl.Params = params
 	return reply

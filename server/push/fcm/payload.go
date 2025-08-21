@@ -8,13 +8,14 @@ import (
 
 	fcmv1 "google.golang.org/api/fcm/v1"
 
-	"github.com/tinode/chat/server/drafty"
-	"github.com/tinode/chat/server/logs"
-	"github.com/tinode/chat/server/push"
-	"github.com/tinode/chat/server/push/common"
-	"github.com/tinode/chat/server/store"
-	t "github.com/tinode/chat/server/store/types"
 	"maps"
+
+	"github.com/cahtio/chat/server/drafty"
+	"github.com/cahtio/chat/server/logs"
+	"github.com/cahtio/chat/server/push"
+	"github.com/cahtio/chat/server/push/common"
+	"github.com/cahtio/chat/server/store"
+	t "github.com/cahtio/chat/server/store/types"
 )
 
 const (

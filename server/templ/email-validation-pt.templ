@@ -5,7 +5,7 @@
 */}}
 
 {{define "subject" -}}
-Registro Tinode: E-mail de confirmação
+Registro CaHt: E-mail de confirmação
 {{- end}}
 
 {{define "body_html" -}}
@@ -15,7 +15,7 @@ Registro Tinode: E-mail de confirmação
 <p>Olá.</p>
 
 <p> Você está recebendo esse e-mail porque alguém usou seu e-mail para registrar-se em
-<a href="{{.HostUrl}}">Tinode</a>.</p>
+<a href="{{.HostUrl}}">CaHt</a>.</p>
 
 <p><a href="{{.HostUrl}}#cred?method=email&code={{.Code}}&token={{.Token}}">Clique para confirmar</a>
 ou acesse
@@ -24,9 +24,9 @@ e entre com o seguinte código:</p>
 <blockquote><big>{{.Code}}</big></blockquote>
 <p>Necessário entrar com login e senha.</p>
 
-<p>Se você não se registrou em Tinode apenas ignore essa mensagem.</p>
+<p>Se você não se registrou em CaHt apenas ignore essa mensagem.</p>
 
-<p><a href="https://tinode.co/">Equipe Tinode</a></p>
+<p><a href="https://im.caht.io/">Equipe CaHt</a></p>
 
 </body>
 </html>
@@ -36,7 +36,7 @@ e entre com o seguinte código:</p>
 
 Olá.
 
-Você está recebendo este e-mail porque alguém usou seu e-mail para registrar-se em Tinode ({{.HostUrl}}).
+Você está recebendo este e-mail porque alguém usou seu e-mail para registrar-se em CaHt ({{.HostUrl}}).
 
 Clique no link {{.HostUrl}}#cred?method=email&code={{.Code}}&token={{.Token}} para confirmar {{.HostUrl}}#cred?what=email
 e entre com o seguinte código:
@@ -45,9 +45,9 @@ e entre com o seguinte código:
 
 Necessário entrar com login e senha.
 
-Se você não se registrou em Tinode apenas ignore essa mensagem..
+Se você não se registrou em CaHt apenas ignore essa mensagem..
 
-Equipe Tinode
-https://tinode.co/
+Equipe CaHt
+https://im.caht.io/
 
 {{- end}}

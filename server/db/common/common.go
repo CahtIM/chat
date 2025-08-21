@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tinode/chat/server/store"
-	t "github.com/tinode/chat/server/store/types"
+	"github.com/cahtio/chat/server/store"
+	t "github.com/cahtio/chat/server/store/types"
 )
 
 // SelectEarliestUpdatedSubs selects no more than the given number of subscriptions from the

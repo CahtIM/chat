@@ -15,7 +15,7 @@
 */}}
 
 {{define "subject" -}}
-Tinode 註冊：確認電子郵件
+CaHt 註冊：確認電子郵件
 {{- end}}
 
 {{define "body_html" -}}
@@ -25,7 +25,7 @@ Tinode 註冊：確認電子郵件
 <p>您好。</p>
 
 <p>您收到此訊息是因為有人使用您的電子郵件在
-<a href="{{.HostUrl}}">Tinode</a> 註冊。</p>
+<a href="{{.HostUrl}}">CaHt</a> 註冊。</p>
 
 <p><a href="{{.HostUrl}}#cred?method=email&code={{.Code}}&token={{.Token}}">點擊確認</a>
 或前往
@@ -34,9 +34,9 @@ Tinode 註冊：確認電子郵件
 <blockquote><big>{{.Code}}</big></blockquote>
 <p>您可能需要輸入登入名稱和密碼。</p>
 
-<p>如果您沒有在 Tinode 註冊，請忽略此訊息。</p>
+<p>如果您沒有在 CaHt 註冊，請忽略此訊息。</p>
 
-<p><a href="https://tinode.co/">Tinode 團隊</a></p>
+<p><a href="https://im.caht.io/">CaHt 團隊</a></p>
 
 </body>
 </html>
@@ -46,7 +46,7 @@ Tinode 註冊：確認電子郵件
 
 您好。
 
-您收到此訊息是因為有人使用您的電子郵件在 Tinode ({{.HostUrl}}) 註冊。
+您收到此訊息是因為有人使用您的電子郵件在 CaHt ({{.HostUrl}}) 註冊。
 
 點擊連結 {{.HostUrl}}#cred?method=email&code={{.Code}}&token={{.Token}} 進行確認，或前往 {{.HostUrl}}#cred?what=email
 並輸入以下驗證碼：
@@ -55,9 +55,9 @@ Tinode 註冊：確認電子郵件
 
 您可能需要輸入登入名稱和密碼。
 
-如果您沒有在 Tinode 註冊，請忽略此訊息。
+如果您沒有在 CaHt 註冊，請忽略此訊息。
 
-Tinode 團隊
-https://tinode.co/
+CaHt 團隊
+https://im.caht.io/
 
 {{- end}}

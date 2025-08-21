@@ -22,10 +22,10 @@ import (
 
 	"slices"
 
-	"github.com/tinode/chat/server/logs"
-	"github.com/tinode/chat/server/store"
-	t "github.com/tinode/chat/server/store/types"
-	"github.com/tinode/chat/server/validate"
+	"github.com/cahtio/chat/server/logs"
+	"github.com/cahtio/chat/server/store"
+	t "github.com/cahtio/chat/server/store/types"
+	"github.com/cahtio/chat/server/validate"
 	i18n "golang.org/x/text/language"
 )
 
@@ -394,7 +394,18 @@ func (v *validator) TempAuthScheme() (string, error) {
 
 // SendMail replacement
 func (v *validator) sendMail(rcpt []string, msg []byte) error {
-	client, err := smtp.Dial(v.SMTPAddr + ":" + v.SMTPPort)
+	addr := v.SMTPAddr + ":" + v.SMTPPort
+	tlsConfig := &tls.Config{
+		InsecureSkipVerify: v.TLSInsecureSkipVerify,
+		ServerName:         v.SMTPAddr,
+	}
+
+	conn, err := tls.Dial("tcp", addr, tlsConfig)
+	if err != nil {
+		return err
+	}
+
+	client, err := smtp.NewClient(conn, v.SMTPAddr)
 	if err != nil {
 		return err
 	}
@@ -545,7 +556,7 @@ func (a *loginAuth) Next(fromServer []byte, more bool) ([]byte, error) {
 func randomBoundary() string {
 	var buf [24]byte
 	rand.Read(buf[:])
-	return fmt.Sprintf("tinode--%x", buf[:])
+	return fmt.Sprintf("caht--%x", buf[:])
 }
 
 func init() {

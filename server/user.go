@@ -3,15 +3,16 @@ package main
 import (
 	"container/heap"
 	"math/rand"
+	"strings"
 	"time"
 
 	"slices"
 
-	"github.com/tinode/chat/server/auth"
-	"github.com/tinode/chat/server/logs"
-	"github.com/tinode/chat/server/push"
-	"github.com/tinode/chat/server/store"
-	"github.com/tinode/chat/server/store/types"
+	"github.com/cahtio/chat/server/auth"
+	"github.com/cahtio/chat/server/logs"
+	"github.com/cahtio/chat/server/push"
+	"github.com/cahtio/chat/server/store"
+	"github.com/cahtio/chat/server/store/types"
 )
 
 const (
@@ -88,6 +89,7 @@ func replyCreateUser(s *Session, msg *ClientComMessage, rec *auth.Rec) {
 	for i := range creds {
 		cr := &creds[i]
 		vld := store.Store.GetValidator(cr.Method)
+		logs.Warn.Printf("create user: failed credential pre-check: method=%s value=%s cr.Params=%v sid=%s\n", cr.Method, cr.Value, cr.Params, s.sid)
 		if _, err := vld.PreCheck(cr.Value, cr.Params); err != nil {
 			logs.Warn.Println("create user: failed credential pre-check", cr, err, "sid=", s.sid)
 			s.queueOut(decodeStoreError(err, msg.Id, msg.Timestamp,
@@ -1196,4 +1198,19 @@ func garbageCollectUsers(period time.Duration, blockSize, minAccountAgeHours int
 	}()
 
 	return stop
+}
+
+func getUserEmail(uid types.Uid) string {
+	email := ""
+	u, err := store.Users.Get(uid)
+	if err == nil {
+		// from tags take email
+		for _, tag := range u.Tags {
+			if strings.HasPrefix(tag, "email:") {
+				email = strings.TrimPrefix(tag, "email:")
+				break
+			}
+		}
+	}
+	return email
 }

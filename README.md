@@ -24,15 +24,15 @@ See [general instructions](./INSTALL.md) or [docker-specific instructions](./doc
 
 * Read [API documentation](docs/API.md) and [FAQ](docs/faq.md). Read configuration instructions contained in the [`tinode.conf`](./server/tinode.conf) file.
 * For support, general questions, discussions post to [https://groups.google.com/d/forum/tinode](https://groups.google.com/d/forum/tinode).
-* For bugs and feature requests [open an issue](https://github.com/tinode/chat/issues/new/choose).
-* Use https://tinode.co/contact for commercial inquiries.
+* For bugs and feature requests [open an issue](https://github.com/cahtio/chat/issues/new/choose).
+* Use https://im.caht.io/contact for commercial inquiries.
 
 ## Helping out
 
 * If you appreciate our work, please help spread the word! Sharing on Reddit, HN, and other communities helps more than you think.
-* Consider buying paid support: https://tinode.co/support.html
+* Consider buying paid support: https://im.caht.io/support.html
 * If you are a software developer, send us your pull requests with bug fixes and new features.
-* If you use the app and discover bugs or missing features, let us know by filing bug reports and feature requests. Vote for existing [feature requests](https://github.com/tinode/chat/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc+label%3A%22feature+request%22) you find most valuable.
+* If you use the app and discover bugs or missing features, let us know by filing bug reports and feature requests. Vote for existing [feature requests](https://github.com/cahtio/chat/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc+label%3A%22feature+request%22) you find most valuable.
 * If you speak a language other than English, [translate](docs/translations.md) the apps into your language. You may also review and improve existing translations.
 * If you are a UI/UX expert, help us polish the app UI.
 * Use it: install it for your colleagues or friends at work or at home.
@@ -43,15 +43,15 @@ A [public Tinode service](https://web.tinode.co/) is available. You can use it j
 
 ### Web
 
-TinodeWeb, a single page web app, is available at https://web.tinode.co/ ([source](https://github.com/tinode/webapp/)). See screenshots below.
+TinodeWeb, a single page web app, is available at https://web.tinode.co/ ([source](https://github.com/cahtio/webapp/)). See screenshots below.
 
 ### Android
 
-[Tinode for Android](https://play.google.com/store/apps/details?id=co.tinode.tindroidx) a.k.a Tindroid is stable and functional ([source](https://github.com/tinode/tindroid)). See the screenshots below. A [debug APK](https://github.com/tinode/tindroid/releases/latest) is also provided for convenience.
+[Tinode for Android](https://play.google.com/store/apps/details?id=co.tinode.tindroidx) a.k.a Tindroid is stable and functional ([source](https://github.com/cahtio/tindroid)). See the screenshots below. A [debug APK](https://github.com/cahtio/tindroid/releases/latest) is also provided for convenience.
 
 ### iOS
 
-[Tinode for iOS](https://apps.apple.com/us/app/tinode/id1483763538) a.k.a. Tinodios is stable and functional ([source](https://github.com/tinode/ios)). See the screenshots below.
+[Tinode for iOS](https://apps.apple.com/us/app/tinode/id1483763538) a.k.a. Tinodios is stable and functional ([source](https://github.com/cahtio/ios)). See the screenshots below.
 
 
 ## Demo/Sandbox
@@ -77,9 +77,9 @@ When you register a new account you are asked for an email address to send valid
 ### Supported
 
 * Multiple native platforms:
-  * [Android](https://github.com/tinode/tindroid/) (Java)
-  * [iOS](https://github.com/tinode/ios) (Swift)
-  * [Web](https://github.com/tinode/webapp/) (React.js)
+  * [Android](https://github.com/cahtio/tindroid/) (Java)
+  * [iOS](https://github.com/cahtio/ios) (Swift)
+  * [Web](https://github.com/cahtio/webapp/) (React.js)
   * Scriptable [command line](tn-cli/) (Python)
 * User features:
   * One-on-one and group messaging.
@@ -107,7 +107,7 @@ When you register a new account you are asked for an email address to send valid
   * Scriptable [command-line tool](tn-cli/) for server administration.
 * Performance, reliability and development:
   * Sharded clustering with failover.
-  * Storage and out of band transfer of large objects like images or document files using local file system or Amazon S3 (other storage systems can be supported with [media handlers](https://github.com/tinode/chat/blob/master/server/media/media.go#L21)).
+  * Storage and out of band transfer of large objects like images or document files using local file system or Amazon S3 (other storage systems can be supported with [media handlers](https://github.com/cahtio/chat/blob/master/server/media/media.go#L21)).
   * JSON or [protobuf version 3](https://developers.google.com/protocol-buffers/) wire protocols.
   * Bindings for various programming languages:
     * Javascript with no external dependencies.
@@ -175,7 +175,7 @@ More translations are [welcome](docs/translations.md). In addition to languages 
 
 ## Screenshots
 
-### [Android](https://github.com/tinode/tindroid/)
+### [Android](https://github.com/cahtio/tindroid/)
 
 <p align="center">
 <img src="docs/android-contacts.png" alt="Android screenshot: list of chats" width=250 />
@@ -183,19 +183,19 @@ More translations are [welcome](docs/translations.md). In addition to languages 
 <img src="docs/android-video-call.png" alt="Android screenshot: video call" width=250 />
 </p>
 
-### [iOS](https://github.com/tinode/ios)
+### [iOS](https://github.com/cahtio/ios)
 
 <p align="center">
 <img src="docs/ios-contacts.png" alt="iOS screenshot: list of chats" width=250 /> <img src="docs/ios-chat.png" alt="iOS screenshot: one conversation" width=250 /> <img src="docs/ios-video-call.png" alt="iOS screenshot: video call" width="250" />
 </p>
 
-### [Desktop Web](https://github.com/tinode/webapp/)
+### [Desktop Web](https://github.com/cahtio/webapp/)
 
 <p align="center">
   <img src="docs/web-desktop.jpg" alt="Desktop web: full app" width=810 />
 </p>
 
-### [Mobile Web](https://github.com/tinode/webapp/)
+### [Mobile Web](https://github.com/cahtio/webapp/)
 
 <p align="center">
   <img src="docs/web-mob-contacts.png" alt="Mobile web: contacts" width=250 /> <img src="docs/web-mob-chat.png" alt="Mobile web: chat" width=250 /> <img src="docs/web-mob-video-call.png" alt="Mobile web: topic info" width=250 />

@@ -4,7 +4,7 @@ package types
 import (
 	"database/sql/driver"
 	"encoding/base32"
-	"encoding/base64"
+	"encoding/base64"	
 	"encoding/binary"
 	"encoding/json"
 	"errors"

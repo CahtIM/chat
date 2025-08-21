@@ -1,0 +1,5 @@
+uploads
+tinode.conf*
+
+server/tinode.conf
+tinode-db/tinode.conf
