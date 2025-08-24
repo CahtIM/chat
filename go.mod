@@ -17,7 +17,7 @@ require (
 	github.com/prometheus/client_golang v1.22.0
 	github.com/prometheus/common v0.65.0
 	github.com/rivo/uniseg v0.4.7
-	github.com/tinode/chat v0.24.2
+	// github.com/tinode/chat v0.24.2
 	github.com/tinode/jsonco v1.0.0
 	github.com/tinode/snowflake v1.0.0
 	go.mongodb.org/mongo-driver v1.17.4

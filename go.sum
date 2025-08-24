@@ -271,8 +271,6 @@ github.com/stretchr/testify v1.8.0/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO
 github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
 github.com/stretchr/testify v1.10.0 h1:Xv5erBjTwe/5IxqUQTdXv5kgmIvbHo3QQyRwhJsOfJA=
 github.com/stretchr/testify v1.10.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
-github.com/tinode/chat v0.24.2 h1:Y4A2WmuYJm5ajt1N1BrJNUUi033sriLTR746OP4kE7c=
-github.com/tinode/chat v0.24.2/go.mod h1:WcF4Ld9rqfCBRvcugPBt2q+QOXGgEiB5Nte9VLbn+Rk=
 github.com/tinode/jsonco v1.0.0 h1:zVcpjzDvjuA1G+HLrckI5EiiRyq9jgV3x37OQl6e5FE=
 github.com/tinode/jsonco v1.0.0/go.mod h1:Bnavu3302Qfn2pILMNwASkelodgeew3IvDrbdzU84u8=
 github.com/tinode/snowflake v1.0.0 h1:YciQ9ZKn1TrnvpS8yZErt044XJaxWVtR9aMO9rOZVOE=

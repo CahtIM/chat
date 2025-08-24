@@ -30,6 +30,7 @@ import (
 	_ "github.com/cahtio/chat/server/auth/anon"
 	_ "github.com/cahtio/chat/server/auth/basic"
 	_ "github.com/cahtio/chat/server/auth/code"
+	_ "github.com/cahtio/chat/server/auth/oauth2"
 	_ "github.com/cahtio/chat/server/auth/rest"
 	_ "github.com/cahtio/chat/server/auth/token"
 	"github.com/cahtio/chat/server/store/types"
